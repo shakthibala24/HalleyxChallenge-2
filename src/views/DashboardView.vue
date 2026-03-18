@@ -130,7 +130,12 @@ function goToConfigure() {
 
 function getWidgetClass(widget) {
   const w = widget.config?.width || 6
-  return `col-span-4 md:col-span-${Math.min(w, 8)} lg:col-span-${Math.min(w, 12)}`
+  if (w >= 12) return 'col-span-4 md:col-span-8 lg:col-span-12'
+  if (w >= 8) return 'col-span-4 md:col-span-8 lg:col-span-8'
+  if (w >= 6) return 'col-span-4 md:col-span-8 lg:col-span-6'
+  if (w >= 4) return 'col-span-4 md:col-span-4 lg:col-span-4'
+  if (w >= 3) return 'col-span-4 md:col-span-4 lg:col-span-3'
+  return 'col-span-4 md:col-span-4 lg:col-span-4'
 }
 
 function getKpiValue(widget) {
